@@ -34,7 +34,6 @@
 									<listOptionValue builtIn="false" value="${AFR_HOME}/lib/third_party/mcu_vendor/xilinx/aws_bsp/ps7_cortexa9_0/include"/>
 									<listOptionValue builtIn="false" value="${AFR_HOME}/demos/common/include"/>
 									<listOptionValue builtIn="false" value="${AFR_HOME}/lib/third_party/jsmn"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/lib/aws/include}&quot;"/>
 									<listOptionValue builtIn="false" value="${AFR_HOME}/lib/FreeRTOS-Plus-TCP/source/protocols/include"/>
 									<listOptionValue builtIn="false" value="${AFR_HOME}/lib/FreeRTOS-Plus-TCP/source/portable/NetworkInterface/"/>
 									<listOptionValue builtIn="false" value="${AFR_HOME}/lib/FreeRTOS-Plus-TCP/source/portable/Compiler/GCC"/>
@@ -47,11 +46,12 @@
 									<listOptionValue builtIn="false" value="${AFR_HOME}/lib/third_party/mbedtls/include"/>
 									<listOptionValue builtIn="false" value="${AFR_HOME}/lib/third_party/trustx/optiga/include"/>
 									<listOptionValue builtIn="false" value="${AFR_HOME}/demos/xilinx/microzed/common/application_code/xilinx_code"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/lib/aws/include}&quot;"/>
 								</option>
 								<option id="xilinx.gnu.compiler.symbols.defined.1582221985" name="Defined symbols (-D)" superClass="xilinx.gnu.compiler.symbols.defined" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="USE_CMDLIB_WITH_RTOS"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_ECDSA_SIGN_ALT"/>
-									<listOptionValue builtIn="false" value="OPTIGA_NO_I2C_INIT"/>
+									<listOptionValue builtIn="false" value="__OPTIGA_NO_I2C_INIT__"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_ECDSA_VERIFY_ALT"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_ECDH_COMPUTE_SHARED_ALT"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_ECDH_GEN_PUBLIC_ALT"/>

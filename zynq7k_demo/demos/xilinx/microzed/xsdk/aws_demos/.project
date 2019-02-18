@@ -1692,6 +1692,10 @@
 	</linkedResources>
 	<variableList>
 		<variable>
+			<name>AFR_HOME</name>
+			<value>$%7BPARENT-5-PROJECT_LOC%7D</value>
+		</variable>
+		<variable>
 			<name>AFR_ROOT</name>
 			<value>$%7BPARENT-5-PROJECT_LOC%7D</value>
 		</variable>
