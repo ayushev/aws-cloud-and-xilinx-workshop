@@ -171,15 +171,16 @@ int main( void )
                             tskIDLE_PRIORITY,
                             mainLOGGING_MESSAGE_QUEUE_LENGTH );
 
-//    /* FreeRTOS TCP IP initialization function */
-//    FreeRTOS_IPInit( ucIPAddress,
-//                     ucNetMask,
-//                     ucGatewayAddress,
-//                     ucDNSServerAddress,
-//                     ucMACAddress );
-
     /* OPTIGA(TM) Trust X initialization function */
     TRUSTX_Init();
+
+
+    /* FreeRTOS TCP IP initialization function */
+    FreeRTOS_IPInit( ucIPAddress,
+                     ucNetMask,
+                     ucGatewayAddress,
+                     ucDNSServerAddress,
+                     ucMACAddress );
 
     /* Start the scheduler.  Initialization that requires the OS to be running,
      * including the Wi-Fi initialization, is performed in the RTOS daemon task
