@@ -152,8 +152,15 @@ static void prvSRand( UBaseType_t ulSeed );
  */
 static void prvMiscInitialization( void );
 
+/**
+ * @brief .
+ */
+void prvStartPollTimerCallback( TimerHandle_t xTimer );
+
 /* Use by the pseudo random number generator. */
 static UBaseType_t ulNextRand;
+
+static TimerHandle_t xStartPollTimer;
 
 /*-----------------------------------------------------------*/
 
@@ -181,6 +188,8 @@ int main( void )
                      ucGatewayAddress,
                      ucDNSServerAddress,
                      ucMACAddress );
+
+    xStartPollTimer = xTimerCreate( "StrtPlTmr", pdMS_TO_TICKS( 10 ), pdTRUE, 0, prvStartPollTimerCallback );
 
     /* Start the scheduler.  Initialization that requires the OS to be running,
      * including the Wi-Fi initialization, is performed in the RTOS daemon task
@@ -238,19 +247,28 @@ void vApplicationDaemonTaskStartupHook( void )
 }
 /*-----------------------------------------------------------*/
 
+void prvStartPollTimerCallback( TimerHandle_t xTimer )
+{
+	static BaseType_t xTasksAlreadyCreated = pdFALSE;
+
+    if( TRUSTX_Active() == pdTRUE)
+    {
+        DEMO_RUNNER_RunDemos();
+        xTasksAlreadyCreated = pdTRUE;
+        xTimerStop( xStartPollTimer, 0 );
+    }
+}
+
 void vApplicationIPNetworkEventHook( eIPCallbackEvent_t eNetworkEvent )
 {
-    static BaseType_t xTasksAlreadyCreated = pdFALSE;
-
     /* If the network has just come up...*/
     if( eNetworkEvent == eNetworkUp )
     {
-    	configPRINT_STRING("Network connection successful.\n\r");
-        if( ( xTasksAlreadyCreated == pdFALSE ) && ( SYSTEM_Init() == pdPASS ) && (TRUSTX_Active() == pdTRUE))
-        {
-            DEMO_RUNNER_RunDemos();
-            xTasksAlreadyCreated = pdTRUE;
-        }
+    	if( SYSTEM_Init() == pdPASS )
+    	{
+            configPRINT_STRING("Network connection successful.\n\r");
+            xTimerStart( xStartPollTimer, 0 );
+    	}
     }
 }
 /*-----------------------------------------------------------*/
