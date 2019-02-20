@@ -34,6 +34,8 @@
 #include "optiga/cmd/CommandLib.h"
 #include "optiga/pal/pal_os_timer.h"
 
+#include "optiga/comms/optiga_comms.h"
+
 ///Length of metadata
 #define LENGTH_METADATA             0x1C
 
@@ -62,6 +64,8 @@ optiga_lib_status_t optiga_util_open_application(optiga_comms_t* p_comms)
 			status = OPTIGA_LIB_ERROR;
 			break;
 		}
+
+		//optiga_comms_reset(p_comms, 1);
 
 		//Wait until IFX I2C initialization is complete
 		while(optiga_comms_status == OPTIGA_COMMS_BUSY)
